@@ -1,0 +1,52 @@
+<script src="https://cdn.jsdelivr.net/npm/tablefilter@0.6.75/src/tablefilter.js"></script>
+
+<a href="tablefilter.csv"> GET CSV </a>
+
+<h1>Foods</h1>
+<a href="#?="></a>
+<table id="table1" cellspacing="0" class="table mytable filterable">
+  <thead>
+    <tr>
+      <th><%= sortable "name", "Nombre" %></th>
+      <th><%= sortable "code", "Código"%></th>
+      <th><%= sortable "homemade_portion", "Medida casera"%></th>
+      <th><%= sortable "calories", "Calorias"%></th>
+      <th><%= sortable "proteins_g", "Proteinas (g)"%></th>
+      <th><%= sortable "carbohydrates_g", "H de C (g)"%></th>
+      <th><%= sortable "lipids", "Lipidos"%></th>
+      <th><%= sortable "saturated_fatty_acids_g", "Ac. grasos saturados (g)"%></th>
+      <th><%= sortable "monounsaturated_fatty_acids_g", "Ac. grasos monoinsat (g)"%></th>
+      <th><%= sortable "polyunsaturated_fatty_acids_g", "Ac. grasos poliinsat (g)"%></th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @foods.each do |food| %>
+      <tr>
+        <td><%= food.name %></td>
+        <td><%= food.code %></td>
+        <td><%= food.homemade_portion %></td>
+        <td><%= food.calories %></td>
+        <td><%= food.proteins_g %></td>
+        <td><%= food.carbohydrates_g %></td>
+        <td><%= food.lipids %> </td>
+        <td><%= food.saturated_fatty_acids_g %></td>
+        <td><%= food.monounsaturated_fatty_acids_g %></td>
+        <td><%= food.polyunsaturated_fatty_acids_g %></td>
+        <td><%= link_to 'GO' %></td>
+        <td><%= link_to 'Show', food %></td>
+        <td><%= link_to 'Edit', edit_food_path(food) %></td>
+        <td><%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+<script language="javascript" type="text/javascript">  
+    var tf01 = new TF('table1');  
+    tf01.AddGrid();  
+</script>   
