@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.where(user: current_user, finished: true)
   end
 
   # GET /recipes/1
@@ -51,6 +51,7 @@ class RecipesController < ApplicationController
   # PATCH/PUT /recipes/1.json
   def update
     @recipe = Recipe.find(params[:id])
+    @recipe.name = params[:recipe][:name]
     params[:recipe][:compound].each do |k, v|
       compound = Compound.find(k)
       compound.grams = v[:grams]

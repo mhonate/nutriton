@@ -17,6 +17,9 @@
          <%= link_to 'Registrarse',  new_user_registration_path, class: 'nav-link'%>
          </li>
        <% else %>
+         <li class="nav-item">
+           <%= link_to 'Ver recetas', recipes_path, class:'nav-link' %>
+         </li>
          <% if Recipe.pending(current_user) %>
          <li class="nav-item">
            <%= link_to "Revisar receta actual (Compuestos registrados: #{Recipe.pending(current_user).compounds.size})",

@@ -6,8 +6,9 @@
 <table>
   <thead>
     <tr>
+      <th></th>
       <th>Nombre</th>
-      <th>Código</th>
+      <th style="padding-left:10px;">Código</th>
       <th>Medida casera</th>
       <th>Calorias</th>
       <th>Proteinas (g)</th>
@@ -18,7 +19,8 @@
   <tbody>
     <% @foods.each do |food| %>
       <tr>
-        <td><%= food.name %></td>
+        <td style="padding-right:20px; background-color:<%= food.source.color %>;"></td>
+        <td style="padding-left:10px;"><%= food.name %></td>
         <td><%= food.code %></td>
         <td><%= food.homemade_portion %></td>
         <td><%= food.calories %></td>
