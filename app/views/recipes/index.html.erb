@@ -38,5 +38,7 @@
   </div>
   <br>
 <% end %>
+<% if @recipes.size > 0 %>
 <%= form.submit 'Generar minuta', class:'btn btn-success text-white', formtarget:'_blank' %>
+<% end %>
 <% end %>
