@@ -4,9 +4,14 @@ Rails.application.routes.draw do
   get 'pages/index'
   devise_for :users
   root 'categories#index'
-  resources :compounds
   resources :foods, only: [:new, :create, :edit, :update, :destroy] do
-    resource :recipes
+    resource :recipes, only: [:create]
+  end
+  resources :recipes, only: [:index, :show, :edit, :update, :destroy] do
+    resources :foods do
+      resources :compounds, only:[:create]
+    end
+    resources :compounds
   end
   resources :sources
   resources :subcategories, only: [:new, :create, :edit, :update, :destroy] do

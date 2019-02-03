@@ -26,12 +26,13 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new
     @recipe.user = current_user
+    @recipe.finished = false
     @recipe.save!
     @food = Food.find(params[:food_id])
     @compound = Compound.new
     @compound.recipe = @recipe
     @compound.food = @food
-    @compound.grams = 0
+    @compound.grams = 100
     @compound.save!
 
     respond_to do |format|

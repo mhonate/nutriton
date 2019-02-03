@@ -22,10 +22,11 @@
         <td><%= food.homemade_portion %></td>
         <td><%= food.calories %></td>
         <td><%= food.proteins_g %></td>
-        <% unless @recipe.nil? %>
-        <td><%= link_to 'Añadir a la receta actual', food_recipes_path(food), method: :patch %></td>
-        <% end %>
+        <% if @recipe %>
+        <td><%= link_to 'Añadir a la receta actual', recipe_food_compounds_path(@recipe, food), method: :post %></td>
+        <% else %>
         <td><%= link_to 'Añadir en una receta nueva', food_recipes_path(food), method: :post %></td>
+        <% end %>
         <td><%= link_to 'Edit', edit_food_path(food) %></td>
         <td><%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

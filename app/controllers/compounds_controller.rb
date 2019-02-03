@@ -24,11 +24,16 @@ class CompoundsController < ApplicationController
   # POST /compounds
   # POST /compounds.json
   def create
-    @compound = Compound.new(compound_params)
+    @recipe = Recipe.find(params[:recipe_id])
+    @compound = Compound.new
+    @compound.food_id = params[:food_id]
+    @compound.recipe_id = params[:recipe_id]
+    @compound.grams = 100
 
     respond_to do |format|
       if @compound.save
-        format.html { redirect_to @compound, notice: 'Compound was successfully created.' }
+        format.html { redirect_to subcategory_foods_path(params[:food_id]),
+        notice: 'Compuesto añadido a la receta actual. acceda al menú para finalizar la creación de la receta.' }
         format.json { render :show, status: :created, location: @compound }
       else
         format.html { render :new }
