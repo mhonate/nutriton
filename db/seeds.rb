@@ -96,6 +96,29 @@ Subcategory.create(name: 'SNACK PRODUCTOS DULCES Y SALADOS', code: '18.1', categ
 @category = Category.create(name: 'VARIOS', code: '19.0', Photo: open('https://images-na.ssl-images-amazon.com/images/I/51GdWkplQIL._SY450_.jpg'))
 Subcategory.create(name: 'VARIOS', code: '19.1', category: @category)
 
+@usda = Source.create(name:'USDA', color:'#6ad171', editable:false)
+Source.create(name:'INDUSTRIAL', color:'#ffc738', editable:false)
+Source.create(name:'OTROS', color:'#ff7a38', editable:false)
+Source.create(name:'USUARIO', color:'#9638ff', editable:true)
+
+Subcategory.all.each do |subcategory|
+ 3.times do
+   Food.create(
+     name: Faker::Food.ingredient,
+     code: rand(10_000).to_s,
+     homemade_portion: Faker::Food.measurement,
+     calories: rand(10_000),
+     proteins_g: rand(10_000),
+     carbohydrates_g: rand(10_000),
+     lipids: rand(10_000),
+     saturated_fatty_acids_g: rand(10_000),
+     monounsaturated_fatty_acids_g: rand(10_000),
+     polyunsaturated_fatty_acids_g: rand(10_000),
+     subcategory: subcategory,
+     source: @usda
+   )
+ end
+end
 
 User.create(name:'juan', email:'admin@gmail.com',password:'123456', password_confirmation:'123456',role: :admin) if Rails.env.development?
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
