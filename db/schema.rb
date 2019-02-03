@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_03_012134) do
+ActiveRecord::Schema.define(version: 2019_02_03_014801) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.integer "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "compounds", force: :cascade do |t|
+    t.integer "food_id"
+    t.integer "recipe_id"
+    t.float "grams"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["food_id"], name: "index_compounds_on_food_id"
+    t.index ["recipe_id"], name: "index_compounds_on_recipe_id"
   end
 
   create_table "foods", force: :cascade do |t|
@@ -77,6 +87,12 @@ ActiveRecord::Schema.define(version: 2019_02_03_012134) do
     t.datetime "updated_at", null: false
     t.index ["source_id"], name: "index_foods_on_source_id"
     t.index ["subcategory_id"], name: "index_foods_on_subcategory_id"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sources", force: :cascade do |t|
