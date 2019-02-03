@@ -1,3 +1,9 @@
+document.addEventListener('turbolinks:load',() => {
+  if(document.getElementsByClassName('print')[0]) {
+    window.print();
+  }
+});
+
 function updateCompound(compound,port,gram) {
   elements = document.getElementsByClassName(compound);
   let initial_gram = parseFloat(document.getElementById(gram).dataset.initial);

@@ -12,6 +12,10 @@ class RecipesController < ApplicationController
   def show
   end
 
+  def list
+    @recipes = Recipe.find(params[:recipe])
+  end
+
   # GET /recipes/new
   def new
     @recipe = Recipe.new

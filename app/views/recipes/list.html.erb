@@ -1,0 +1,25 @@
+<div class="container print">
+  <% @recipes.each do |recipe| %>
+  <div class="row border-top">
+    <div class="col">
+      <br>
+      <h5>
+        <%= recipe.name %>
+      </h5>
+      <% recipe.compounds.each do |compound| %>
+      Ingrediente o preparación: <%= compound.food.name %>
+      <ul>
+        <li>Medida casera: <%= compound.food.homemade_portion %></li>
+        <li>Porción cantidad: <%= compound.portions %></li>
+        <li>GR/ML: <%= compound.grams %></li>
+        <li>Calorias: <%= compound.food.calories %></li>
+        <li>Proteinas: <%= compound.food.proteins_g %></li>
+        <li>H de C g: <%= compound.food.carbohydrates_g %></li>
+        <li>Lípido: <%= compound.food.lipids %></li>
+      </ul>
+      <br>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>
