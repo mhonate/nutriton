@@ -8,6 +8,9 @@
 
 Category.destroy_all
 Subcategory.destroy_all
+Source.destroy_all
+User.destroy_all
+AdminUser.destroy_all
 
 @category = Category.create!(name: 'LECHE Y DERIVADOS', code: '1.0')
 Subcategory.create!(name: 'LECHE', code: '1.1', category: @category)
@@ -90,6 +93,29 @@ Subcategory.create!(name: 'SNACK PRODUCTOS DULCES Y SALADOS', code: '18.1', cate
 @category = Category.create!(name: 'VARIOS', code: '19.0')
 Subcategory.create!(name: 'VARIOS', code: '19.1', category: @category)
 
+@usda = Source.create(name:'USDA', color:'#6ad171', editable:false)
+Source.create(name:'INDUSTRIAL', color:'#ffc738', editable:false)
+Source.create(name:'OTROS', color:'#ff7a38', editable:false)
+Source.create(name:'USUARIO', color:'#9638ff', editable:false)
+
+Subcategory.all.each do |subcategory|
+  3.times do
+    Food.create(
+      name: Faker::Food.ingredient,
+      code: rand(10_000).to_s,
+      homemade_portion: Faker::Food.measurement,
+      calories: rand(10_000),
+      proteins_g: rand(10_000),
+      carbohydrates_g: rand(10_000),
+      lipids: rand(10_000),
+      saturated_fatty_acids_g: rand(10_000),
+      monounsaturated_fatty_acids_g: rand(10_000),
+      polyunsaturated_fatty_acids_g: rand(10_000),
+      subcategory: subcategory,
+      source: @usda
+    )
+  end
+end
 
 User.create!(name:'juan', email:'admin@gmail.com',password:'123456', password_confirmation:'123456',role: :admin) if Rails.env.development?
 if Rails.env.development?
