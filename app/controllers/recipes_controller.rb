@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :set_recipe, only: [:show, :edit, :destroy]
 
   # GET /recipes
   # GET /recipes.json
@@ -24,11 +24,21 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = Recipe.new
+    @recipe.user = current_user
+    @recipe.finished = false
+    @recipe.save!
+    @food = Food.find(params[:food_id])
+    @compound = Compound.new
+    @compound.recipe = @recipe
+    @compound.food = @food
+    @compound.grams = 100
+    @compound.save!
 
     respond_to do |format|
       if @recipe.save
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
+        format.html { redirect_to subcategory_foods_path(@food.subcategory),
+                      notice: 'Receta creada, acceda al menú para finalizar la creación de la receta.' }
         format.json { render :show, status: :created, location: @recipe }
       else
         format.html { render :new }
@@ -40,23 +50,29 @@ class RecipesController < ApplicationController
   # PATCH/PUT /recipes/1
   # PATCH/PUT /recipes/1.json
   def update
+    @recipe = Recipe.find(params[:id])
+    params[:recipe][:compound].each do |k, v|
+      compound = Compound.find(k)
+      compound.grams = v[:grams]
+      compound.portions = v[:portions]
+      compound.save!
+    end
+    @recipe.finished = true
+    @recipe.save!
     respond_to do |format|
-      if @recipe.update(recipe_params)
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
-        format.json { render :show, status: :ok, location: @recipe }
-      else
-        format.html { render :edit }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to root_path,
+      notice: 'Receta creada.' }
+      format.json { render :show, status: :ok, location: @recipe }
     end
   end
 
   # DELETE /recipes/1
   # DELETE /recipes/1.json
   def destroy
+    Compound.where(recipe: @recipe).destroy_all
     @recipe.destroy
     respond_to do |format|
-      format.html { redirect_to recipes_url, notice: 'Recipe was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Receta eliminada.' }
       format.json { head :no_content }
     end
   end

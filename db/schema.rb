@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_02_03_085708) do
     t.float "grams"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "portions", default: 1
     t.index ["food_id"], name: "index_compounds_on_food_id"
     t.index ["recipe_id"], name: "index_compounds_on_recipe_id"
   end
@@ -121,6 +122,9 @@ ActiveRecord::Schema.define(version: 2019_02_03_085708) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.boolean "finished"
+    t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
   create_table "sources", force: :cascade do |t|

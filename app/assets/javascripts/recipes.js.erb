@@ -1,0 +1,10 @@
+function updateCompound(compound,port,gram) {
+  elements = document.getElementsByClassName(compound);
+  let initial_gram = parseFloat(document.getElementById(gram).dataset.initial);
+  let changed_gram = parseFloat(document.getElementById(gram).value);
+  let changed_port = parseFloat(document.getElementById(port).value);
+  for (var i = 0; i < elements.length; i++) {
+    let initial_elem = parseFloat(elements[i].dataset.initial);
+    elements[i].innerHTML =  Math.round(((initial_elem*changed_gram)/100)*changed_port);
+  }
+}

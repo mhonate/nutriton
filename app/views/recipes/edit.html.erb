@@ -1,6 +1,46 @@
-<h1>Editing Recipe</h1>
+<% if Recipe.pending(current_user) == @recipe %>
+<h1>Receta actual</h1>
+<% else %>
+<h1>Receta "<%= @recipe.name %>"</h1>
+<% end %>
 
-<%= render 'form', recipe: @recipe %>
-
-<%= link_to 'Show', @recipe %> |
+<%= form_for(@recipe, method: :put) do |form| %>
+Nombre: <%= form.text_field :name %>
+<table>
+  <thead>
+    <th>Ingrediente o preparación</th>
+    <th>Medida casera</th>
+    <th>Porción cantidad</th>
+    <th>GR/ML</th>
+    <th>Calorias</th>
+    <th>Proteinas</th>
+    <th>H de C g</th>
+    <th>Lípido</th>
+    <th>Ac. grasos saturados g.</th>
+    <th>Ac. grasos Monoinsat g.</th>
+    <th>Ac. grasos Poliinsat g.</th>
+  </thead>
+  <tbody>
+  <% @recipe.compounds.each do |compound| %>
+    <tr>
+      <td><%= compound.food.name %></td>
+      <td><%= compound.food.homemade_portion %></td>
+      <td><%= form.number_field "compound[#{compound.id}][portions]", value: compound.portions, onchange:"updateCompound('compound-#{compound.id}','comp-inp-port-#{compound.id}','comp-inp-gram-#{compound.id}')", id:"comp-inp-port-#{compound.id}" %></td>
+      <td><%= form.number_field "compound[#{compound.id}][grams]", 'data-initial':compound.grams, value: compound.grams, onchange:"updateCompound('compound-#{compound.id}','comp-inp-port-#{compound.id}','comp-inp-gram-#{compound.id}')", id:"comp-inp-gram-#{compound.id}" %></td>
+      <td class="compound-<%= compound.id %>" data-initial="<%= compound.food.calories %>"><%= compound.food.calories %></td>
+      <td class="compound-<%= compound.id %>" data-initial="<%= compound.food.proteins_g %>"><%= compound.food.proteins_g %></td>
+      <td class="compound-<%= compound.id %>" data-initial="<%= compound.food.carbohydrates_g %>"><%= compound.food.carbohydrates_g %></td>
+      <td class="compound-<%= compound.id %>" data-initial="<%= compound.food.lipids %>"><%= compound.food.lipids %></td>
+      <td class="compound-<%= compound.id %>" data-initial="<%= compound.food.saturated_fatty_acids_g %>"><%= compound.food.saturated_fatty_acids_g %></td>
+      <td class="compound-<%= compound.id %>" data-initial="<%= compound.food.monounsaturated_fatty_acids_g %>"><%= compound.food.monounsaturated_fatty_acids_g %></td>
+      <td class="compound-<%= compound.id %>" data-initial="<%= compound.food.polyunsaturated_fatty_acids_g %>"><%= compound.food.polyunsaturated_fatty_acids_g %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<br>
+<%= form.submit 'Crear receta' %>
+<%= link_to 'Eliminar receta', recipe_path(@recipe), method: :delete %>
+<% end %>
+<br>
 <%= link_to 'Back', recipes_path %>

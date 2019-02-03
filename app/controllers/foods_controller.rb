@@ -1,10 +1,18 @@
 class FoodsController < ApplicationController
   before_action :set_food, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /foods
   # GET /foods.json
   def index
-    @foods = Food.all
+    @recipe = Recipe.pending(current_user)
+    @subcategory = Subcategory.find(params[:subcategory_id])
+    @foods = Food.where(subcategory: @subcategory)
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @foods.to_csv, filename: "foods-#{@subcategory.name}-#{Date.today}.csv" }
+    end
   end
 
   # GET /foods/1

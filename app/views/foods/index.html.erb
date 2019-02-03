@@ -1,64 +1,17 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Foods</h1>
+<%= link_to 'Volver atrás', category_subcategories_path(@subcategory.category) %>
+<br><br>
 
+<a href="foods.csv"> GET CSV </a>
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Code</th>
-      <th>Portion</th>
-      <th>Grams</th>
-      <th>Homemade portion</th>
-      <th>Specification</th>
-      <th>Value</th>
-      <th>Gross weight</th>
-      <th>Net weight</th>
-      <th>Humidity</th>
-      <th>Factor atwater</th>
-      <th>Calories</th>
-      <th>Proteins</th>
-      <th>Carbohydrates</th>
-      <th>Dietary fiber</th>
-      <th>Soluble fiber</th>
-      <th>Insoluble fiber</th>
-      <th>Lipids</th>
-      <th>Saturated fatty acids</th>
-      <th>Monounsaturated fatty acids</th>
-      <th>Polyunsaturated fatty acids</th>
-      <th>Cholesterol</th>
-      <th>Carotene</th>
-      <th>Retinol</th>
-      <th>Vitamin a total</th>
-      <th>Vitamin b1 mg</th>
-      <th>Vitamin b2 mg</th>
-      <th>Niacin</th>
-      <th>Vitamin b4 mg</th>
-      <th>Pyridoxine</th>
-      <th>Cobalamin</th>
-      <th>Folates</th>
-      <th>Pantothenic acid mg</th>
-      <th>Vitamin c mg</th>
-      <th>Vitamin e mg</th>
-      <th>Calcium</th>
-      <th>Copper</th>
-      <th>Iron mg</th>
-      <th>Magnesium mg</th>
-      <th>Phosphorus mg</th>
-      <th>Potassium mg</th>
-      <th>Selenium mg</th>
-      <th>Sodium mg</th>
-      <th>Zinc mg</th>
-      <th>Orac index</th>
-      <th>Total polyphenols</th>
-      <th>Nitrates</th>
-      <th>Nitrites</th>
-      <th>Other1</th>
-      <th>Other2</th>
-      <th>Other3</th>
-      <th>Subcategory</th>
-      <th>Source</th>
-      <th colspan="3"></th>
+      <th>Nombre</th>
+      <th>Código</th>
+      <th>Medida casera</th>
+      <th>Calorias</th>
+      <th>Proteinas (g)</th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -67,65 +20,17 @@
       <tr>
         <td><%= food.name %></td>
         <td><%= food.code %></td>
-        <td><%= food.portion %></td>
-        <td><%= food.grams %></td>
         <td><%= food.homemade_portion %></td>
-        <td><%= food.specification %></td>
-        <td><%= food.value %></td>
-        <td><%= food.gross_weight %></td>
-        <td><%= food.net_weight %></td>
-        <td><%= food.humidity %></td>
-        <td><%= food.factor_atwater %></td>
         <td><%= food.calories %></td>
-        <td><%= food.proteins %></td>
-        <td><%= food.carbohydrates %></td>
-        <td><%= food.dietary_fiber %></td>
-        <td><%= food.soluble_fiber %></td>
-        <td><%= food.insoluble_fiber %></td>
-        <td><%= food.lipids %></td>
-        <td><%= food.saturated_fatty_acids %></td>
-        <td><%= food.monounsaturated_fatty_acids %></td>
-        <td><%= food.polyunsaturated_fatty_acids %></td>
-        <td><%= food.cholesterol %></td>
-        <td><%= food.carotene %></td>
-        <td><%= food.retinol %></td>
-        <td><%= food.vitamin_a_total %></td>
-        <td><%= food.vitamin_b1_mg %></td>
-        <td><%= food.vitamin_b2_mg %></td>
-        <td><%= food.niacin %></td>
-        <td><%= food.vitamin_b4_mg %></td>
-        <td><%= food.pyridoxine %></td>
-        <td><%= food.cobalamin %></td>
-        <td><%= food.folates %></td>
-        <td><%= food.pantothenic_acid_mg %></td>
-        <td><%= food.vitamin_c_mg %></td>
-        <td><%= food.vitamin_e_mg %></td>
-        <td><%= food.calcium %></td>
-        <td><%= food.copper %></td>
-        <td><%= food.iron_mg %></td>
-        <td><%= food.magnesium_mg %></td>
-        <td><%= food.phosphorus_mg %></td>
-        <td><%= food.potassium_mg %></td>
-        <td><%= food.selenium_mg %></td>
-        <td><%= food.sodium_mg %></td>
-        <td><%= food.zinc_mg %></td>
-        <td><%= food.orac_index %></td>
-        <td><%= food.total_polyphenols %></td>
-        <td><%= food.nitrates %></td>
-        <td><%= food.nitrites %></td>
-        <td><%= food.other1 %></td>
-        <td><%= food.other2 %></td>
-        <td><%= food.other3 %></td>
-        <td><%= food.subcategory %></td>
-        <td><%= food.source %></td>
-        <td><%= link_to 'Show', food %></td>
+        <td><%= food.proteins_g %></td>
+        <% if @recipe %>
+        <td><%= link_to 'Añadir a la receta actual', recipe_food_compounds_path(@recipe, food), method: :post %></td>
+        <% else %>
+        <td><%= link_to 'Añadir en una receta nueva', food_recipes_path(food), method: :post %></td>
+        <% end %>
         <td><%= link_to 'Edit', edit_food_path(food) %></td>
         <td><%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Food', new_food_path %>
