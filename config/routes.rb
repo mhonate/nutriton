@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   root to: "pages#index"
   resources :compounds
   resources :recipes
-  resources :foods
+  resources :foods, only: [:new, :create, :edit, :update, :destroy]
   resources :sources
-  resources :subcategories, only: [:new, :create, :edit, :update, :destroy]
+  resources :subcategories, only: [:new, :create, :edit, :update, :destroy] do
+    resources :foods, only: [:index]
+  end
   resources :categories do
     resources :subcategories, only: [:index]
   end
