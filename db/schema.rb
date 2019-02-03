@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_03_014801) do
+ActiveRecord::Schema.define(version: 2019_02_03_015340) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 2019_02_03_014801) do
     t.integer "source_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "english_name"
     t.index ["source_id"], name: "index_foods_on_source_id"
     t.index ["subcategory_id"], name: "index_foods_on_subcategory_id"
   end
