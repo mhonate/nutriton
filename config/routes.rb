@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   get 'pages/index'
   get 'pages/tablefilter'
+
   devise_for :users
   root 'categories#index'
   resources :foods, only: [:new, :create, :edit, :update, :destroy] do
