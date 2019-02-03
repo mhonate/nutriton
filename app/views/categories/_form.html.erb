@@ -17,18 +17,8 @@
                           <%= form.file_field :Photo%>
                         </div>
 
-                        <div class="field">
-                          <%= form.label :name, class:"text-info"%>
-                          <%= form.text_field :name, class: "form-control"%>
-                        </div>
-
-                        <div class="field">
-                          <%= form.label :code, class:"text-info" %>
-                          <%= form.number_field :code, class: "form-control" %>
-                        </div>
-
-                        <div class="btn btn-info btn-md, text-right">
-
-                          <%= form.submit %>
-                        </div>
-                        <% end %>
+  <div class="actions">
+    <%= form.submit class: "btn btn-success text-white"%>
+  </div>
+<% end %>
+</div>

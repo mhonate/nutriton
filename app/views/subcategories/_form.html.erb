@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <%= form_with(model: subcategory, local: true) do |form| %>
   <% if subcategory.errors.any? %>
     <div id="error_explanation">
@@ -30,3 +31,4 @@
     <%= form.submit %>
   </div>
 <% end %>
+</div>

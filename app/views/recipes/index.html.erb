@@ -1,27 +1,42 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Recipes</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @recipes.each do |recipe| %>
-      <tr>
-        <td><%= recipe.name %></td>
-        <td><%= link_to 'Show', recipe %></td>
-        <td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
-        <td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<h1>Recetas</h1>
 <br>
-
-<%= link_to 'New Recipe', new_recipe_path %>
+<%= form_with url: recipes_list_path, local: true, method: :post do |form| %>
+<% @recipes.each do |recipe| %>
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">
+        <%= form.check_box 'recipe[]', {class: 'form-control', style:'display: inline-block; width: 27px;'}, recipe.id, nil %>
+        <%= recipe.name %>
+      </h4>
+      <table class="table">
+        <thead>
+          <th>Ingrediente o preparación</th>
+          <th>Medida casera</th>
+          <th>Porción cantidad</th>
+          <th>GR/ML</th>
+          <th>Calorias</th>
+          <th>Proteinas</th>
+          <th>H de C g</th>
+          <th>Lípido</th>
+        </thead>
+        <tbody>
+        <% recipe.compounds.each do |compound| %>
+          <tr>
+            <td><%= compound.food.name %></td>
+            <td><%= compound.food.homemade_portion %></td>
+            <td><%= compound.portions %></td>
+            <td><%= compound.grams %></td>
+            <td><%= compound.food.calories %></td>
+            <td><%= compound.food.proteins_g %></td>
+            <td><%= compound.food.carbohydrates_g %></td>
+            <td><%= compound.food.lipids %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <br>
+<% end %>
+<%= form.submit 'Generar minuta', class:'btn btn-success text-white', formtarget:'_blank' %>
+<% end %>

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :foods, only: [:new, :create, :edit, :update, :destroy] do
     resource :recipes, only: [:create]
   end
+  post 'recipes/list'
   resources :recipes, only: [:index, :show, :edit, :update, :destroy] do
     resources :foods do
       resources :compounds, only:[:create]

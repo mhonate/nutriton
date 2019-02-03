@@ -5,7 +5,8 @@
 <% end %>
 
 <%= form_for(@recipe, method: :put) do |form| %>
-Nombre: <%= form.text_field :name %>
+Nombre: <%= form.text_field :name, class:'form-control' %>
+<br>
 <table>
   <thead>
     <th>Ingrediente o preparación</th>
@@ -39,8 +40,8 @@ Nombre: <%= form.text_field :name %>
   </tbody>
 </table>
 <br>
-<%= form.submit 'Crear receta' %>
-<%= link_to 'Eliminar receta', recipe_path(@recipe), method: :delete %>
+<%= form.submit 'Crear receta', class:'btn btn-success' %>
+<%= link_to 'Eliminar receta', recipe_path(@recipe),
+    method: :delete, class:'btn btn-danger text-white' %>
 <% end %>
 <br>
-<%= link_to 'Back', recipes_path %>
