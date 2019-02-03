@@ -17,6 +17,11 @@
          <%= link_to 'Registrarse',  new_user_registration_path, class: 'nav-link'%>
          </li>
        <% else %>
+         <% unless Recipe.where(user:current_user).last.nil? %>
+         <li class="nav-item">
+           <a class="nav-link">Revisar receta actual (Compuestos registrados: <%= Recipe.where(user:current_user).last.compounds.size %>)</a>
+         </li>
+         <% end %>
          <li class="nav-item">
            <a class="nav-link"><%= current_user.name %></a>
          </li>

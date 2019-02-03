@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :set_recipe, only: [:show, :edit, :destroy]
 
   # GET /recipes
   # GET /recipes.json
@@ -24,11 +24,20 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = Recipe.new
+    @recipe.user = current_user
+    @recipe.save!
+    @food = Food.find(params[:food_id])
+    @compound = Compound.new
+    @compound.recipe = @recipe
+    @compound.food = @food
+    @compound.grams = 0
+    @compound.save!
 
     respond_to do |format|
       if @recipe.save
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
+        format.html { redirect_to subcategory_foods_path(@food.subcategory),
+                      notice: 'Receta creada, acceda al menú para finalizar la creación de la receta.' }
         format.json { render :show, status: :created, location: @recipe }
       else
         format.html { render :new }
@@ -40,14 +49,17 @@ class RecipesController < ApplicationController
   # PATCH/PUT /recipes/1
   # PATCH/PUT /recipes/1.json
   def update
+    @recipe = Recipe.where(user:current_user).last
+    @food = Food.find(params[:food_id])
+    @compound = Compound.new
+    @compound.recipe = @recipe
+    @compound.food = @food
+    @compound.grams = 0
+    @compound.save!
     respond_to do |format|
-      if @recipe.update(recipe_params)
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
-        format.json { render :show, status: :ok, location: @recipe }
-      else
-        format.html { render :edit }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to subcategory_foods_path(@food.subcategory),
+      notice: 'Compuesto añadido a la receta actual. acceda al menú para finalizar la creación de la receta.' }
+      format.json { render :show, status: :ok, location: @recipe }
     end
   end
 

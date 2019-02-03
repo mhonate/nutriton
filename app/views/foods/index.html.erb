@@ -10,11 +10,6 @@
       <th>Medida casera</th>
       <th>Calorias</th>
       <th>Proteinas (g)</th>
-      <th>H de C (g)</th>
-      <th>Lipidos</th>
-      <th>Ac. grasos saturados (g)</th>
-      <th>Ac. grasos monoinsat (g)</th>
-      <th>Ac. grasos poliinsat (g)</th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -27,13 +22,10 @@
         <td><%= food.homemade_portion %></td>
         <td><%= food.calories %></td>
         <td><%= food.proteins_g %></td>
-        <td><%= food.carbohydrates_g %></td>
-        <td><%= food.lipids %> </td>
-        <td><%= food.saturated_fatty_acids_g %></td>
-        <td><%= food.monounsaturated_fatty_acids_g %></td>
-        <td><%= food.polyunsaturated_fatty_acids_g %></td>
-        <td><%= link_to 'GO' %></td>
-        <td><%= link_to 'Show', food %></td>
+        <% unless @recipe.nil? %>
+        <td><%= link_to 'Añadir a la receta actual', food_recipes_path(food), method: :patch %></td>
+        <% end %>
+        <td><%= link_to 'Añadir en una receta nueva', food_recipes_path(food), method: :post %></td>
         <td><%= link_to 'Edit', edit_food_path(food) %></td>
         <td><%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
