@@ -216,7 +216,6 @@ body .kickass_field input:focus:invalid {
 /* --- Begin template styling --- */
 .container {
   background: #f9f9f9;
-  height: 100%;
   border: 14px solid white;
   padding: 40px;
   box-sizing: border-box;
