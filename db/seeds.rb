@@ -90,4 +90,6 @@ Subcategory.create(name: 'SNACK PRODUCTOS DULCES Y SALADOS', code: '18.1', categ
 @category = Category.create(name: 'VARIOS', code: '19.0')
 Subcategory.create(name: 'VARIOS', code: '19.1', category: @category)
 
+
 User.create(name:'juan', email:'admin@gmail.com',password:'123456', password_confirmation:'123456',role: :admin) if Rails.env.development?
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
