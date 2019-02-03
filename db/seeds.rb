@@ -6,8 +6,15 @@
 #   movies = Movie.create!([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create!(name: 'Luke', movie: movies.first)
 
-Category.destroy_all
 Subcategory.destroy_all
+Category.destroy_all
+Compound.destroy_all
+Recipe.destroy_all
+Source.destroy_all
+Food.destroy_all
+User.destroy_all
+AdminUser.destroy_all
+
 @category = Category.create(name: 'LECHE Y DERIVADOS', code: '1.0', Photo: open('http://d2x9t9e76t51np.cloudfront.net/wp-content/uploads/2016/11/15203312/Leche-y-derivados.jpg'))
 Subcategory.create(name: 'LECHE', code: '1.1', category: @category)
 Subcategory.create(name: 'YOGUR', code: '1.2', category: @category)
