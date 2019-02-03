@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2019_02_03_022405) do
 
   create_table "foods", force: :cascade do |t|
     t.string "name"
-    t.integer "code"
+    t.string "code"
     t.integer "portion"
     t.integer "grams"
     t.integer "homemade_portion"
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 2019_02_03_022405) do
 
   create_table "subcategories", force: :cascade do |t|
     t.string "name"
-    t.integer "code"
+    t.string "code"
     t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
