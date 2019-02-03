@@ -26,10 +26,10 @@
             <td><%= compound.food.homemade_portion %></td>
             <td><%= compound.portions %></td>
             <td><%= compound.grams %></td>
-            <td><%= compound.food.calories %></td>
-            <td><%= compound.food.proteins_g %></td>
-            <td><%= compound.food.carbohydrates_g %></td>
-            <td><%= compound.food.lipids %></td>
+            <td><%= compound.three_formula(compound.food.calories) %></td>
+            <td><%= compound.three_formula(compound.food.proteins_g) %></td>
+            <td><%= compound.three_formula(compound.food.carbohydrates_g) %></td>
+            <td><%= compound.three_formula(compound.food.lipids) %></td>
           </tr>
         <% end %>
         </tbody>
@@ -38,5 +38,7 @@
   </div>
   <br>
 <% end %>
+<% if @recipes.size > 0 %>
 <%= form.submit 'Generar minuta', class:'btn btn-success text-white', formtarget:'_blank' %>
+<% end %>
 <% end %>

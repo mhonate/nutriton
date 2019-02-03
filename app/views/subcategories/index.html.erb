@@ -1,5 +1,4 @@
-<h1>Subcategorias de <%=  @subcategories.first.category.name %> </h1>
-
+<h1>Sub-Categorías de <%=  @subcategories.first.category.name %> </h1>
 <%= link_to 'Volver atrás', categories_path %>
 <br><br>
 <table class="table">
@@ -19,7 +18,7 @@
         <td><%= subcategory.code %></td>
         <td><%= subcategory.category.name %></td>
         <td><%= link_to ' ', subcategory_foods_path(subcategory), class: "fa fa-search" %></td>
-        
+
       </tr>
     <% end %>
   </tbody>
