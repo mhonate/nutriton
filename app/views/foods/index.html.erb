@@ -1,9 +1,10 @@
 <h1>Foods</h1>
 <%= link_to 'Volver atrás', category_subcategories_path(@subcategory.category) %>
 <br><br>
-
-<a href="foods.csv"> GET CSV </a>
-<table>
+<%= link_to "Obetener CSV", "foods.csv", class: "btn btn-info text-white" %>
+<br>
+<br>
+<table class="table">
   <thead>
     <tr>
       <th></th>
@@ -26,12 +27,12 @@
         <td><%= food.calories %></td>
         <td><%= food.proteins_g %></td>
         <% if @recipe %>
-        <td><%= link_to 'Añadir a la receta actual', recipe_food_compounds_path(@recipe, food), method: :post %></td>
+        <td><%= link_to 'Añadir a la receta actual', recipe_food_compounds_path(@recipe, food), method: :post, class: "btn btn-success text-white" %></td>
         <% else %>
-        <td><%= link_to 'Añadir en una receta nueva', food_recipes_path(food), method: :post %></td>
+        <td><%= link_to 'Añadir en una receta nueva', food_recipes_path(food), method: :post, class: "btn btn-success text-white" %></td>
         <% end %>
-        <td><%= link_to 'Edit', edit_food_path(food) %></td>
-        <td><%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Editar', edit_food_path(food), class: "btn btn-warning text-white"%></td>
+        <td><%= link_to 'Eliminar', food, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger text-white"%></td>
       </tr>
     <% end %>
   </tbody>

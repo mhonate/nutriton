@@ -1,6 +1,6 @@
 <h1>Categories</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -14,10 +14,9 @@
       <tr>
         <td><%= category.name %></td>
         <td><%= category.code %></td>
-        <td><%= link_to 'GO', category_subcategories_path(category) %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ir', category_subcategories_path(category), class: "btn btn-success text-white" %></td>
+        <td><%= link_to 'Editar', edit_category_path(category), class: "btn btn-warning text-white" %></td>
+        <!--<td><%= link_to 'Eliminar', category, method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger text-white"%></td>-->
       </tr>
     <% end %>
   </tbody>

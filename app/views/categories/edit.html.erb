@@ -1,6 +1,7 @@
 <h1>Editing Category</h1>
 
 <%= render 'form', category: @category %>
+<br>
 
-<%= link_to 'Show', @category %> |
-<%= link_to 'Back', categories_path %>
+<%= link_to 'Ver', @category, class: "btn btn-info text-white" %> |
+<%= link_to 'Volver', categories_path, class: "btn btn-secondary text-white" %>
