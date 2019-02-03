@@ -21,6 +21,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 
 gem 'activeadmin'
+#gem "active_admin_import"
 
 gem 'faker'
 
