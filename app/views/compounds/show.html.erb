@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Food:</strong>
+  <%= @compound.food %>
+</p>
+
+<p>
+  <strong>Recipe:</strong>
+  <%= @compound.recipe %>
+</p>
+
+<p>
+  <strong>Grams:</strong>
+  <%= @compound.grams %>
+</p>
+
+<%= link_to 'Edit', edit_compound_path(@compound) %> |
+<%= link_to 'Back', compounds_path %>
