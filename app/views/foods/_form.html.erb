@@ -1,0 +1,282 @@
+<%= form_with(model: food, local: true) do |form| %>
+  <% if food.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(food.errors.count, "error") %> prohibited this food from being saved:</h2>
+
+      <ul>
+      <% food.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.number_field :code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :portion %>
+    <%= form.number_field :portion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :grams %>
+    <%= form.number_field :grams %>
+  </div>
+
+  <div class="field">
+    <%= form.label :homemade_portion %>
+    <%= form.number_field :homemade_portion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :specification %>
+    <%= form.text_field :specification %>
+  </div>
+
+  <div class="field">
+    <%= form.label :value %>
+    <%= form.text_field :value %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gross_weight %>
+    <%= form.text_field :gross_weight %>
+  </div>
+
+  <div class="field">
+    <%= form.label :net_weight %>
+    <%= form.text_field :net_weight %>
+  </div>
+
+  <div class="field">
+    <%= form.label :humidity %>
+    <%= form.text_field :humidity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :factor_atwater %>
+    <%= form.text_field :factor_atwater %>
+  </div>
+
+  <div class="field">
+    <%= form.label :calories %>
+    <%= form.text_field :calories %>
+  </div>
+
+  <div class="field">
+    <%= form.label :proteins %>
+    <%= form.text_field :proteins %>
+  </div>
+
+  <div class="field">
+    <%= form.label :carbohydrates %>
+    <%= form.text_field :carbohydrates %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dietary_fiber %>
+    <%= form.text_field :dietary_fiber %>
+  </div>
+
+  <div class="field">
+    <%= form.label :soluble_fiber %>
+    <%= form.text_field :soluble_fiber %>
+  </div>
+
+  <div class="field">
+    <%= form.label :insoluble_fiber %>
+    <%= form.text_field :insoluble_fiber %>
+  </div>
+
+  <div class="field">
+    <%= form.label :lipids %>
+    <%= form.text_field :lipids %>
+  </div>
+
+  <div class="field">
+    <%= form.label :saturated_fatty_acids %>
+    <%= form.text_field :saturated_fatty_acids %>
+  </div>
+
+  <div class="field">
+    <%= form.label :monounsaturated_fatty_acids %>
+    <%= form.text_field :monounsaturated_fatty_acids %>
+  </div>
+
+  <div class="field">
+    <%= form.label :polyunsaturated_fatty_acids %>
+    <%= form.text_field :polyunsaturated_fatty_acids %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cholesterol %>
+    <%= form.text_field :cholesterol %>
+  </div>
+
+  <div class="field">
+    <%= form.label :carotene %>
+    <%= form.text_field :carotene %>
+  </div>
+
+  <div class="field">
+    <%= form.label :retinol %>
+    <%= form.text_field :retinol %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vitamin_a_total %>
+    <%= form.text_field :vitamin_a_total %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vitamin_b1_mg %>
+    <%= form.text_field :vitamin_b1_mg %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vitamin_b2_mg %>
+    <%= form.text_field :vitamin_b2_mg %>
+  </div>
+
+  <div class="field">
+    <%= form.label :niacin %>
+    <%= form.text_field :niacin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vitamin_b4_mg %>
+    <%= form.text_field :vitamin_b4_mg %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pyridoxine %>
+    <%= form.text_field :pyridoxine %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cobalamin %>
+    <%= form.text_field :cobalamin %>
+  </div>
+
+  <div class="field">
+    <%= form.label :folates %>
+    <%= form.text_field :folates %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pantothenic_acid_mg %>
+    <%= form.text_field :pantothenic_acid_mg %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vitamin_c_mg %>
+    <%= form.text_field :vitamin_c_mg %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vitamin_e_mg %>
+    <%= form.text_field :vitamin_e_mg %>
+  </div>
+
+  <div class="field">
+    <%= form.label :calcium %>
+    <%= form.text_field :calcium %>
+  </div>
+
+  <div class="field">
+    <%= form.label :copper %>
+    <%= form.text_field :copper %>
+  </div>
+
+  <div class="field">
+    <%= form.label :iron_mg %>
+    <%= form.text_field :iron_mg %>
+  </div>
+
+  <div class="field">
+    <%= form.label :magnesium_mg %>
+    <%= form.text_field :magnesium_mg %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phosphorus_mg %>
+    <%= form.text_field :phosphorus_mg %>
+  </div>
+
+  <div class="field">
+    <%= form.label :potassium_mg %>
+    <%= form.text_field :potassium_mg %>
+  </div>
+
+  <div class="field">
+    <%= form.label :selenium_mg %>
+    <%= form.text_field :selenium_mg %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sodium_mg %>
+    <%= form.text_field :sodium_mg %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zinc_mg %>
+    <%= form.text_field :zinc_mg %>
+  </div>
+
+  <div class="field">
+    <%= form.label :orac_index %>
+    <%= form.text_field :orac_index %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_polyphenols %>
+    <%= form.text_field :total_polyphenols %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nitrates %>
+    <%= form.text_field :nitrates %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nitrites %>
+    <%= form.text_field :nitrites %>
+  </div>
+
+  <div class="field">
+    <%= form.label :other1 %>
+    <%= form.text_field :other1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :other2 %>
+    <%= form.text_field :other2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :other3 %>
+    <%= form.text_field :other3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :subcategory_id %>
+    <%= form.text_field :subcategory_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :source_id %>
+    <%= form.text_field :source_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
