@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_03_055256) do
+ActiveRecord::Schema.define(version: 2019_02_03_073924) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2019_02_03_055256) do
     t.float "grams"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "portions", default: 1
     t.index ["food_id"], name: "index_compounds_on_food_id"
     t.index ["recipe_id"], name: "index_compounds_on_recipe_id"
   end

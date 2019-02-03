@@ -67,9 +67,10 @@ class RecipesController < ApplicationController
   # DELETE /recipes/1
   # DELETE /recipes/1.json
   def destroy
+    Compound.where(recipe: @recipe).destroy_all
     @recipe.destroy
     respond_to do |format|
-      format.html { redirect_to recipes_url, notice: 'Recipe was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Receta eliminada.' }
       format.json { head :no_content }
     end
   end
