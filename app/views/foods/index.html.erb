@@ -1,7 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Foods</h1>
-
+<%= link_to 'Volver atrás', category_subcategories_path(@subcategory.category) %>
+<br><br>
 <table>
   <thead>
     <tr>
@@ -33,7 +32,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Food', new_food_path %>

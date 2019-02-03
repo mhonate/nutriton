@@ -6,7 +6,8 @@ class FoodsController < ApplicationController
   # GET /foods.json
   def index
     @recipe = Recipe.pending(current_user)
-    @foods = Food.where(subcategory_id:params[:subcategory_id])
+    @subcategory = Subcategory.find(params[:subcategory_id])
+    @foods = Food.where(subcategory: @subcategory)
   end
 
   # GET /foods/1
