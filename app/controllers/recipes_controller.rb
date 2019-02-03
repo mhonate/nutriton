@@ -50,16 +50,18 @@ class RecipesController < ApplicationController
   # PATCH/PUT /recipes/1
   # PATCH/PUT /recipes/1.json
   def update
-    @recipe = Recipe.where(user:current_user).last
-    @food = Food.find(params[:food_id])
-    @compound = Compound.new
-    @compound.recipe = @recipe
-    @compound.food = @food
-    @compound.grams = 0
-    @compound.save!
+    @recipe = Recipe.find(params[:id])
+    params[:recipe][:compound].each do |k, v|
+      compound = Compound.find(k)
+      compound.grams = v[:grams]
+      compound.portions = v[:portions]
+      compound.save!
+    end
+    @recipe.finished = true
+    @recipe.save!
     respond_to do |format|
-      format.html { redirect_to subcategory_foods_path(@food.subcategory),
-      notice: 'Compuesto añadido a la receta actual. acceda al menú para finalizar la creación de la receta.' }
+      format.html { redirect_to root_path,
+      notice: 'Receta creada.' }
       format.json { render :show, status: :ok, location: @recipe }
     end
   end

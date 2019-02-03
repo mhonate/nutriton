@@ -4,7 +4,8 @@
 <h1>Receta "<%= @recipe.name %>"</h1>
 <% end %>
 
-<%= form_with(model: @recipe, method: :put, local: true) do |form| %>
+<%= form_for(@recipe, method: :put) do |form| %>
+Nombre: <%= form.text_field :name %>
 <table>
   <thead>
     <th>Ingrediente o preparación</th>
