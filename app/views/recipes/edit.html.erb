@@ -24,15 +24,15 @@
     <tr>
       <td><%= compound.food.name %></td>
       <td><%= compound.food.homemade_portion %></td>
-      <td><%= form.number_field "compound[#{compound.id}][portions]", value: compound.portions %></td>
-      <td><%= form.number_field "compound[#{compound.id}][grams]", value: compound.grams %></td>
-      <td><%= compound.food.calories %></td>
-      <td><%= compound.food.proteins_g %></td>
-      <td><%= compound.food.carbohydrates_g %></td>
-      <td><%= compound.food.lipids %></td>
-      <td><%= compound.food.saturated_fatty_acids_g %></td>
-      <td><%= compound.food.monounsaturated_fatty_acids_g %></td>
-      <td><%= compound.food.polyunsaturated_fatty_acids_g %></td>
+      <td><%= form.number_field "compound[#{compound.id}][portions]", value: compound.portions, onchange:"updateCompound('compound-#{compound.id}','comp-inp-port-#{compound.id}','comp-inp-gram-#{compound.id}')", id:"comp-inp-port-#{compound.id}" %></td>
+      <td><%= form.number_field "compound[#{compound.id}][grams]", 'data-initial':compound.grams, value: compound.grams, onchange:"updateCompound('compound-#{compound.id}','comp-inp-port-#{compound.id}','comp-inp-gram-#{compound.id}')", id:"comp-inp-gram-#{compound.id}" %></td>
+      <td class="compound-<%= compound.id %>" data-initial="<%= compound.food.calories %>"><%= compound.food.calories %></td>
+      <td class="compound-<%= compound.id %>" data-initial="<%= compound.food.proteins_g %>"><%= compound.food.proteins_g %></td>
+      <td class="compound-<%= compound.id %>" data-initial="<%= compound.food.carbohydrates_g %>"><%= compound.food.carbohydrates_g %></td>
+      <td class="compound-<%= compound.id %>" data-initial="<%= compound.food.lipids %>"><%= compound.food.lipids %></td>
+      <td class="compound-<%= compound.id %>" data-initial="<%= compound.food.saturated_fatty_acids_g %>"><%= compound.food.saturated_fatty_acids_g %></td>
+      <td class="compound-<%= compound.id %>" data-initial="<%= compound.food.monounsaturated_fatty_acids_g %>"><%= compound.food.monounsaturated_fatty_acids_g %></td>
+      <td class="compound-<%= compound.id %>" data-initial="<%= compound.food.polyunsaturated_fatty_acids_g %>"><%= compound.food.polyunsaturated_fatty_acids_g %></td>
     </tr>
   <% end %>
   </tbody>
