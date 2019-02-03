@@ -1,10 +1,11 @@
 class SubcategoriesController < ApplicationController
   before_action :set_subcategory, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /subcategories
   # GET /subcategories.json
   def index
-    @subcategories = Subcategory.where(category_id: params[:category_id])
+    @subcategories = Subcategory.all
   end
 
   # GET /subcategories/1

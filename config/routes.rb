@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   get 'pages/index'
   devise_for :users
-  root to: "pages#index"
+  root 'categories#index'
   resources :compounds
   resources :recipes
   resources :foods, only: [:new, :create, :edit, :update, :destroy]
