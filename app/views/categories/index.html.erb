@@ -1,27 +1,50 @@
-<h1>Categories</h1>
+<p id="notice"><%= notice %></p>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Code</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
+<div class="container">
+    <div class="well well-sm">
+        <strong><h1>Categories</h1></strong>
+        <div class="btn-group">
+            <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
+            </span></a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
+                class="glyphicon glyphicon-th"></span></a>
+        </div>
+    </div>
+    <div id="categories-list" class="row">
+        <% @categories.each do |category| %>
+        <div class="item  col-xs-4 col-lg-4">
+            <div class="thumbnail">
+                <img class="group list-group-image" src="<%= image_url category.Photo %>" alt="" width="100%" />
 
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.name %></td>
-        <td><%= category.code %></td>
-        <td><%= link_to 'Ir', category_subcategories_path(category), class: "btn btn-success text-white" %></td>
-        <td><%= link_to 'Editar', edit_category_path(category), class: "btn btn-warning text-white" %></td>
-        <!--<td><%= link_to 'Eliminar', category, method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger text-white"%></td>-->
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New Category', new_category_path %>
+
+
+                <div class="caption">
+                    <h4 class="group inner list-group-item-heading">
+                        <td><%= category.name %></td></h4>
+                        <h4 class="group inner list-group-item-heading">
+                            <td><%= category.code %></td>
+                    <p class="group inner list-group-item-text">
+                        Product description... Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <a class="btn btn-info text-white btn-md" href="<%= category_subcategories_path(category) %>">Ver</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <td><%= link_to 'Editar', edit_category_path(category), class:"btn btn-warning text-white btn-md" %></td>
+            <td><%= link_to 'Eliminar', category, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger text-white btn-md" %></td>
+
+        </div>
+
+        <% end %>
+
+      </div>
+      <br>
+      <div>
+        <%= link_to 'Nueva Categoría', new_category_path, class:"btn btn-info btn-md text-white" %>
+      </div>
+</div>

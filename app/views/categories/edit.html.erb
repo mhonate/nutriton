@@ -1,7 +1,19 @@
-<h1>Editing Category</h1>
+<div id="login">
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+                  <form id="login-form" class="form" action="" method="post">
 
-<%= render 'form', category: @category %>
-<br>
 
-<%= link_to 'Ver', @category, class: "btn btn-info text-white" %> |
-<%= link_to 'Volver', categories_path, class: "btn btn-secondary text-white" %>
+                    <%= render 'form', category: @category %>
+                    <%= link_to 'Ver', @category , class:"btn btn-info btn-md text-white"%>
+                    <%= link_to 'Volver', categories_path , class:"btn btn-info btn-md text-white"%>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
