@@ -12,10 +12,10 @@
         <li>Medida casera: <%= compound.food.homemade_portion %></li>
         <li>Porción cantidad: <%= compound.portions %></li>
         <li>GR/ML: <%= compound.grams %></li>
-        <li>Calorias: <%= compound.food.calories %></li>
-        <li>Proteinas: <%= compound.food.proteins_g %></li>
-        <li>H de C g: <%= compound.food.carbohydrates_g %></li>
-        <li>Lípido: <%= compound.food.lipids %></li>
+        <li>Calorias: <%= compound.three_formula(compound.food.calories) %></li>
+        <li>Proteinas: <%= compound.three_formula(compound.food.proteins_g) %></li>
+        <li>H de C g: <%= compound.three_formula(compound.food.carbohydrates_g) %></li>
+        <li>Lípido: <%= compound.three_formula(compound.food.lipids) %></li>
       </ul>
       <br>
       <% end %>
